@@ -7,40 +7,42 @@ import Image from 'next/image';
 
 export default function Article() {
   const router = useRouter();
-  const id = router.query.id;
+  const { id } = router.query;
 
-  const [author, setAuthor] = useState('');
-  const [date, setDate] = useState('');
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [url, setUrl] = useState('');
+  const [articleData, setArticleData] = useState({
+    author: '',
+    date: '',
+    title: '',
+    content: '',
+    url: '',
+  });
 
   useEffect(() => {
-    getArticles();
-  }, [getArticles]);
+    getArticle();
+  }, [id]);
 
-  const getArticles = async () => {
+  const getArticle = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/api/articles/${id}`);
-      const articleData = response.data.data[0];
+      const fetchedArticleData = response.data.data[0];
 
-      if (articleData) {
-        setAuthor(articleData.author);
-        setDate(articleData.date);
-        setTitle(articleData.title);
-        setContent(articleData.content);
-        setUrl(articleData.url);
+      if (fetchedArticleData) {
+        setArticleData({
+          author: fetchedArticleData.author,
+          date: fetchedArticleData.date,
+          title: fetchedArticleData.title,
+          content: fetchedArticleData.content,
+          url: fetchedArticleData.url,
+        });
       } else {
-   
-        console.error('Data artikel tidak sesuai dengan harapan:', articleData);
+        console.error('Data artikel tidak sesuai dengan harapan:', fetchedArticleData);
       }
     } catch (error) {
-    
       console.error('Error fetching article data:', error);
     }
   };
 
- 
+  const { author, date, title, content, url } = articleData;
 
   return (
     <>
