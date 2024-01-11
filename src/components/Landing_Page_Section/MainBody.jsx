@@ -1,8 +1,8 @@
-import image1 from '../../../public/img/hero 1.png';
-import image2 from '../../../public/img/hero 2.png';
-import image3 from '../../../public/img/hero 3.png';
-import image4 from '../../../public/img/hero 4.png';
-import image5 from '../../../public/img/Hero 5.png';
+import image1 from '../../../public/img/hero1.png';
+import image2 from '../../../public/img/hero2.png';
+import image3 from '../../../public/img/hero3.png';
+import image4 from '../../../public/img/hero4.png';
+import image5 from '../../../public/img/hero5.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
