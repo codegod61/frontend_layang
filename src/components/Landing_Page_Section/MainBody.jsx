@@ -1,22 +1,18 @@
-import image1 from '../../../public/img/hero1.png';
-import image2 from '../../../public/img/hero2.png';
-import image3 from '../../../public/img/hero3.png';
-import image4 from '../../../public/img/hero4.png';
-import image5 from '../../../public/img/hero5.png';
+import hero1 from '../../../public/img/hero1.png';
+import hero2 from '../../../public/img/hero2.png';
+import hero3 from '../../../public/img/hero3.png';
+import hero4 from '../../../public/img/hero4.png';
+import hero5 from '../../../public/img/hero5.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
-
-
-
 export default function MainBody() {
-  const images = [image1, image2, image3, image4, image5];
+  const images = [hero1, hero2, hero3, hero4, hero5];
 
-  const [currentImage, setCurrentImage] =useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -25,8 +21,6 @@ export default function MainBody() {
 
     return () => clearInterval(intervalId);
   }, [currentImage, images.length]);
-
-
 
   useEffect(() => {
     AOS.init({
