@@ -28,14 +28,10 @@ const LoginPage = () => {
   };
 
 
-
-
-
-
   async function login(e) {
     e.preventDefault();
     await axios
-      .post("http://localhost:5000/login", {
+      .post("https://backendlayang.azurewebsites.net/login", {
         email: email,
         password: password,
       })
