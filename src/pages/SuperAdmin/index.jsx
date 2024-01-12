@@ -74,7 +74,7 @@ const Index = () => {
               <span className="font-semibold text-2xl pl-64 font-Poppins">Dashboard Super Admin</span>
             </div>
             <div className="pr-10">
-              <Image alt="" className="w-12 h-12 rounded-full bg-slate-300" />
+              {/* <Image src={} alt="" className="w-12 h-12 rounded-full bg-slate-300" /> */}
             </div>
           </div>
 

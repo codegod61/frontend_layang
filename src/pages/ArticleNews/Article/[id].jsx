@@ -23,7 +23,7 @@ export default function Article() {
 
   const getArticle = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/articles/${id}`);
+      const response = await axios.get(`https://backendlayang.azurewebsites.net/api/articles/${id}`);
       const fetchedArticleData = response.data.data[0];
 
       if (fetchedArticleData) {
@@ -111,7 +111,7 @@ export default function Article() {
 
             <p className="text-[20px] font-normal my-[27px] text-slate-500 ">{content}</p>
 
-            <Image src={url} alt="" className="w-[744px] h-[558px] rounded-[30px] object-cover my-[27px]" />
+            <img src={url} alt="" className="w-[744px] h-[558px] rounded-[30px] object-cover my-[27px]" />
             <p className="text-[20px] font-normal my-[27px] text-slate-500 ">{content}</p>
           </div>
         </div>

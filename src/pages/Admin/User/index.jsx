@@ -16,7 +16,7 @@ const User = () => {
       await axios.delete(`https://backendlayang.azurewebsites.net/api/users/${id}`);
       setShowModal(false);
       
-      router.push(`/Admin/${id}`)
+      router.push(`/Admin/1`)
       getUsers();
     } catch (error) {
     }

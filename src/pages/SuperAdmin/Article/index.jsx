@@ -48,6 +48,7 @@ const Article = () => {
                 title={value.title}
                 author={value.author}
                 imgUrl={value.url}
+                alt={value.alt}
                 date={value.date}
                 content1={value.content}
                 id={value.article_id}

@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   const getAdmins = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/daerah/kelurahan/all');
+      const response = await axios.get('https://backendlayang.azurewebsites.net/api/daerah/kelurahan/all');
       if (Array.isArray(response.data)) {
         setKelurahanId(response.data.data.id);
       } else {

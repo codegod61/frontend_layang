@@ -12,7 +12,7 @@ const Admin = () => {
 
   const deleteArticles = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/daerah/kelurahan/delete/${id}`);
+      await axios.delete(`https://backendlayang.azurewebsites.net/api/daerah/kelurahan/delete/${id}`);
       setShowModal(false);
       getAdmins();
       router.push("/SuperAdmin")
@@ -27,11 +27,11 @@ const Admin = () => {
 
   const getAdmins = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/daerah/kelurahan/all');
-      if (Array.isArray(response.data)) {
-        setAdmin(response.data);
+      const response = await axios.get('https://backendlayang.azurewebsites.net/api/daerah/kelurahan/all');
+      if (Array.isArray(response.data.data)) {
+        setAdmin(response.data.data);
       } else {
-        console.error('Data yang diterima bukan array:', response.data);
+        console.error('Data yang diterima bukan array:', response.data.data);
       }
     } catch (error) {
       console.error('Error saat mengambil data admin:', error);

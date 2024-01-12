@@ -65,7 +65,7 @@ const Help = () => {
                                 <td className="px-3 py-2">{item.tempat}</td>
                                 <td className="px-3 py-2 cen">
                             {/* Display image using <img> element */}
-                                <Image src={item.Bukti} alt={`Bukti ${item.id}`} style={{ maxWidth: '75%', maxHeight: '75px', cursor: 'pointer' }} onClick={() => openModal(item.Bukti)} />
+                                <img src={item.Bukti} alt={`Bukti ${item.id}`} style={{ maxWidth: '75%', maxHeight: '75px', cursor: 'pointer' }} onClick={() => openModal(item.Bukti)} />
                                  </td>
                             </tr>
                         ))}
@@ -79,7 +79,7 @@ const Help = () => {
                 overlayClassName="fixed inset-0 bg-gray-500 bg-opacity-75"
             >
             
-                {selectedImage && <Image src={selectedImage} alt="Modal Content" style={{ maxWidth: '100%', maxHeight: '100%' }} />}
+                {selectedImage && <img src={selectedImage} alt="Modal Content" style={{ maxWidth: '100%', maxHeight: '100%' }} />}
             </Modal>
 
         </div>

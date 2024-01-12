@@ -7,7 +7,7 @@ import Agenda from './Agenda';
 import User from "./User"
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 
 const Index = () => {
@@ -38,7 +38,7 @@ const Index = () => {
         <ul className="absolute top-0 left-0 z-10">
           <div className="bg-[#27005D] w-64 pb-4 rounded-r-3xl border-r-4 border-white h-screen">
             <div className="mb-1">
-             <Image className="w-52 h-52 mx-auto" src="/img/adminlogo.png" alt="logoAdmin" width={196} height={199} />
+             <img className="w-52 h-52 mx-auto" src="/img/adminlogo.png" alt="logoAdmin" />
             </div>
 
             <nav className="mb-8 pb-8 font-Poppins md:pt-16 lg:pt-16">
@@ -84,7 +84,7 @@ const Index = () => {
               <span className="font-semibold text-2xl pl-64 font-Poppins">Dasboard Admin</span>
             </div>
             <div className="pr-10">
-              <Image alt="" className="w-12 h-12 rounded-full bg-slate-300" />
+              <img alt="" className="w-12 h-12 rounded-full bg-slate-300" />
             </div>
           </div>
 

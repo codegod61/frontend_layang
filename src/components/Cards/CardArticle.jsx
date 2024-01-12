@@ -1,6 +1,6 @@
 import ButtonArticle from '../Buttons/ButtonArticle';
 import Link from 'next/link';
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function CardArticle({ title, author ,  imgUrl, date, content1, id}){
     
@@ -16,7 +16,7 @@ export default function CardArticle({ title, author ,  imgUrl, date, content1, i
     
     return(
         <div className="container w-[351px] rounded-[30px] border-[1px] border-[#D9D9D9] hover:border-transparent hover:shadow-lg transition-all duration-300">
-            <Image src={imgUrl} alt="articleImage" width={351} height={231} className='rounded-t-[30px] object-cover w-[351px] h-[231px]'/>
+            <img src={imgUrl} alt="articleImage" className='rounded-t-[30px] object-cover w-[351px] h-[231px]'/>
             <div className=" ">
                 <div className="isiArticle flex gap-[28px] pt-[16px] px-[32px] mb-[14px]">
                     <div className="date flex items-center font-Poppins gap-[5px]">
