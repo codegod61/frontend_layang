@@ -10,7 +10,7 @@ const Admin = () => {
 
   const deleteArticles = async (id) => {
     try {
-      await axios.delete(`https://backendlayang.azurewebsites.net/api/admin/${id}`);
+      await axios.delete(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/admin/${id}`);
       setShowModal(false);
       getAdmins();
     } catch (error) {
@@ -24,7 +24,7 @@ const Admin = () => {
 
   const getAdmins = async () => {
     try {
-      const response = await axios.get('https://backendlayang.azurewebsites.net/api/admin');
+      const response = await axios.get('https://layangapi-cc9d2c2831dc.herokuapp.com/api/admin');
       if (Array.isArray(response.data.data)) {
         setAdmin(response.data.data);
       } else {

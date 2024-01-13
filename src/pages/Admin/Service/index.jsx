@@ -23,7 +23,7 @@ const Service = () => {
 
   useEffect(() => {
     const getServices = async () => {
-      const response = await axios.get(`https://backendlayang.azurewebsites.net/api/pengajuan/user/${id}`);
+      const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/pengajuan/user/${id}`);
       setService(response.data.data);
     };
 
@@ -34,7 +34,7 @@ const Service = () => {
 
   useEffect(() => {
     const getServicesById = async () => {
-      const response = await axios.get(`https://backendlayang.azurewebsites.net/api/pengajuan/${editId}`);
+      const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/pengajuan/${editId}`);
       setServiceById(response.data.data);
     };
     
@@ -51,7 +51,7 @@ const Service = () => {
 
   const deleteUsers = async (id) => {
     try {
-      await axios.delete(`https://backendlayang.azurewebsites.net/api/pengajuan/delete/${id}`);
+      await axios.delete(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/pengajuan/delete/${id}`);
       setShowModal(false);
       handleRouter();
       getServices();
@@ -63,7 +63,7 @@ const Service = () => {
     formData.append('proses', proses);
 
     try {
-      await axios.patch(`https://backendlayang.azurewebsites.net/api/pengajuan/update/${id}`, formData, {
+      await axios.patch(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/pengajuan/update/${id}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },

@@ -13,7 +13,7 @@ const User = () => {
 
   const deleteUsers = async (id) => {
     try {
-      await axios.delete(`https://backendlayang.azurewebsites.net/api/users/${id}`);
+      await axios.delete(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/users/${id}`);
       setShowModal(false);
       
       router.push(`/Admin/1`)
@@ -25,7 +25,7 @@ const User = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const response = await axios.get(`https://backendlayang.azurewebsites.net/api/users/kel_id/${id}`);
+        const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/users/kel_id/${id}`);
         if (Array.isArray(response.data.data)) {
           setUser(response.data.data);
         } else {

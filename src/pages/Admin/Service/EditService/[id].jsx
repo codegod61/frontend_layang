@@ -21,7 +21,7 @@ const EditService = () => {
 
   useEffect(() => {
     const getServiceById = async () => {
-      const response = await axios.get(`https://backendlayang.azurewebsites.net/services/${id}`);
+      const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/services/${id}`);
       setNama(response.data.nama);
       setNik(response.data.nik);
       setTtl(response.data.ttl);
@@ -70,7 +70,7 @@ const EditService = () => {
     formData.append('proses', proses);
 
     try {
-      await axios.patch(`https://backendlayang.azurewebsites.net/services/${id}`, formData, {
+      await axios.patch(`https://layangapi-cc9d2c2831dc.herokuapp.com/services/${id}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },

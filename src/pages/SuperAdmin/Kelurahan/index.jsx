@@ -12,7 +12,7 @@ const Admin = () => {
 
   const deleteArticles = async (id) => {
     try {
-      await axios.delete(`https://backendlayang.azurewebsites.net/api/daerah/kelurahan/delete/${id}`);
+      await axios.delete(`https://layangapi-cc9d2c2831dc.herokuapp.com/daerah/kelurahan/delete/${id}`);
       setShowModal(false);
       getAdmins();
       router.push("/SuperAdmin")
@@ -27,7 +27,7 @@ const Admin = () => {
 
   const getAdmins = async () => {
     try {
-      const response = await axios.get('https://backendlayang.azurewebsites.net/api/daerah/kelurahan/all');
+      const response = await axios.get('https://layangapi-cc9d2c2831dc.herokuapp.com/daerah/kelurahan/all');
       if (Array.isArray(response.data.data)) {
         setAdmin(response.data.data);
       } else {

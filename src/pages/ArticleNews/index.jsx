@@ -22,7 +22,7 @@ export default function NewsList() {
   }, []);
 
   const getArticles = async () => {
-    const response = await axios.get("https://backendlayang.azurewebsites.net/api/articles");
+    const response = await axios.get("https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles");
     setArticles(response.data.data);
   };
 

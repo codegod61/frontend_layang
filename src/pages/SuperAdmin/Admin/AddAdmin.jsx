@@ -17,7 +17,7 @@ const AddAdmin = () => {
 
   const loadKelurahan = async () => {
     try {
-      const response = await axios.get('https://backendlayang.azurewebsites.net/api/daerah/kelurahan/all');
+      const response = await axios.get('https://layangapi-cc9d2c2831dc.herokuapp.com/api/daerah/kelurahan/all');
       const kelurahanData = response.data;
       console.log(KelurahanId)
       if (kelurahanData && Array.isArray(kelurahanData)) {
@@ -52,7 +52,7 @@ const AddAdmin = () => {
     formData.append('alamat', alamat);
 
     try {
-      await axios.post(`https://backendlayang.azurewebsites.net/api/admin`, formData, {
+      await axios.post(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/admin`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },

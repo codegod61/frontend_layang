@@ -16,7 +16,7 @@ const EditArticle = () => {
   useEffect(() => {
     const getArticleById = async () => {
       try {
-        const response = await axios.get(`https://backendlayang.azurewebsites.net/api/articles/${id}`);
+        const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles/${id}`);
         const articleData = response.data.data[0];
         setAuthor(articleData.author);
         setDate(articleData.date);
@@ -51,7 +51,7 @@ const EditArticle = () => {
     formData.append('content', content);
 
     try {
-      await axios.patch(`https://backendlayang.azurewebsites.net/api/articles/${id}`, formData, {
+      await axios.patch(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles/${id}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },

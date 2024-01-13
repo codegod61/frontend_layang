@@ -9,7 +9,7 @@ export default function CardAdmin({ title, author, imgUrl, date, content1, id })
   
   const deleteArticles = async (Id) => {
     try {
-      await axios.delete(`https://backendlayang.azurewebsites.net/api/articles/${Id}`);
+      await axios.delete(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles/${Id}`);
       setShowModal(false)
     } catch (error) {
       console.log(error);

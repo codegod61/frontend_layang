@@ -29,7 +29,7 @@ const AddArticle = () => {
     formData.append("content", content);
   
     try {
-      const response = await axios.post("https://backendlayang.azurewebsites.net/api/articles", formData, {
+      const response = await axios.post("https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles", formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },

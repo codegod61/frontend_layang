@@ -17,7 +17,7 @@ const EditAdmin = () => {
 
   const getAdminById = async () => {
     try {
-      const response = await axios.get(`https://backendlayang.azurewebsites.net/api/admin/${id}`);
+      const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/admin/${id}`);
       setKelurahanId(response.data.data[0].kelurahan_id);
       setNama(response.data.data[0].nama);
       setPangkat(response.data.data[0].pangkat);
@@ -52,7 +52,7 @@ const EditAdmin = () => {
     formData.append('alamat', alamat);
 
     try {
-      await axios.patch(`https://backendlayang.azurewebsites.net/api/admin/${id}`, formData, {
+      await axios.patch(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/admin/${id}`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
@@ -67,7 +67,7 @@ const EditAdmin = () => {
   useEffect(() => {
     const loadKelurahan = async () => {
       try {
-        const response = await axios.get('https://backendlayang.azurewebsites.net/api/daerah/kelurahan/all');
+        const response = await axios.get('https://layangapi-cc9d2c2831dc.herokuapp.com/api/daerah/kelurahan/all');
         const kelurahanData = response.data;
         console.log(KelurahanId)
         if (kelurahanData && Array.isArray(kelurahanData)) {

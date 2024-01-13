@@ -29,7 +29,7 @@ const AddAdmin = () => {
   useEffect(() => {
     const loadProvinsi = async () => {
       try {
-        const response = await axios.get('https://backendlayang.azurewebsites.net/api/daerah/provinsi/all');
+        const response = await axios.get('https://layangapi-cc9d2c2831dc.herokuapp.com/api/daerah/provinsi/all');
         const provinsiData = response.data.data;
         console.log(ProvinsiId)
         if (provinsiData && Array.isArray(provinsiData)) {
@@ -65,7 +65,7 @@ const AddAdmin = () => {
     formData.append('district_id', KecamatanId);
   
     try {
-    await axios.post(`https://backendlayang.azurewebsites.net/api/daerah/kelurahan/create`, formData, {
+    await axios.post(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/daerah/kelurahan/create`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
         },
@@ -78,7 +78,7 @@ const AddAdmin = () => {
 
   const loadKabupaten = async () => {
     try {
-      const response = await axios.get(`https://backendlayang.azurewebsites.net/api/daerah/kabupaten/${ProvinsiId}`);
+      const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/daerah/kabupaten/${ProvinsiId}`);
       const kabupatenData = response.data;
       if (kabupatenData && Array.isArray(kabupatenData)) {
         setKabupatenList(kabupatenData);
@@ -94,7 +94,7 @@ const AddAdmin = () => {
   
   const loadKecamatan = async () => {
     try {
-      const response = await axios.get(`https://backendlayang.azurewebsites.net/api/daerah/kecamatan/${KabupatenId}`);
+      const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/daerah/kecamatan/${KabupatenId}`);
       const kecamatanData = response.data;
       if (kecamatanData && Array.isArray(kecamatanData)) {
         setKecamatanList(kecamatanData);

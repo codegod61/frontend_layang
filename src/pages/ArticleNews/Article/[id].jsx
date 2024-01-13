@@ -23,7 +23,7 @@ export default function Article() {
 
   const getArticle = async () => {
     try {
-      const response = await axios.get(`https://backendlayang.azurewebsites.net/api/articles/${id}`);
+      const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles/${id}`);
       const fetchedArticleData = response.data.data[0];
 
       if (fetchedArticleData) {

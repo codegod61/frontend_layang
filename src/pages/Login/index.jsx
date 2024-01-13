@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   const getAdmins = async () => {
     try {
-      const response = await axios.get('https://backendlayang.azurewebsites.net/api/daerah/kelurahan/all');
+      const response = await axios.get('https://layangapi-cc9d2c2831dc.herokuapp.com/api/daerah/kelurahan/all');
       if (Array.isArray(response.data)) {
         setKelurahanId(response.data.data.id);
       } else {
@@ -31,7 +31,7 @@ const LoginPage = () => {
   async function login(e) {
     e.preventDefault();
     await axios
-      .post("https://backendlayang.azurewebsites.net/login", {
+      .post("https://layangapi-cc9d2c2831dc.herokuapp.com/login", {
         email: email,
         password: password,
       })
