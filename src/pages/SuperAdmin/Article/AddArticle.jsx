@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 const AddArticle = () => {
   const router = useRouter();
@@ -120,7 +119,7 @@ const AddArticle = () => {
 
           {preview && (
             <div className="mb-4">
-              <Image src={preview} alt="Preview Image" className="w-32 h-32 object-cover" />
+              <img src={preview} alt="Preview Image" className="w-32 h-32 object-cover" />
             </div>
           )}
 
