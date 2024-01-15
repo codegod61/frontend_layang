@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 const EditArticle = () => {
   const router = useRouter();
@@ -14,23 +13,18 @@ const EditArticle = () => {
   const id = router.query.id;
 
   useEffect(() => {
-    const getArticleById = async () => {
-      try {
-        const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles/${id}`);
-        const articleData = response.data.data[0];
-        setAuthor(articleData.author);
-        setDate(articleData.date);
-        setTitle(articleData.title);
-        setContent(articleData.content);
-        setFile(articleData.image);
-        setPreview(articleData.url);
-      } catch (error) {
-        console.error('Error fetching article data:', error);
-      }
-    };
-
     getArticleById();
-  }, [id]);
+  }, []);
+
+  const getArticleById = async () => {
+    const response = await axios.get(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles/${id}`);
+    setAuthor(response.data.data[0].author);
+    setDate(response.data.data[0].date);
+    setTitle(response.data.data[0].title);
+    setContent(response.data.data[0].content);
+    setFile(response.data.data[0].image);
+    setPreview(response.data.data[0].url);
+  };
 
   const loadImage = (e) => {
     const image = e.target.files[0];
@@ -49,7 +43,6 @@ const EditArticle = () => {
     formData.append('date', formattedDate);
     formData.append('title', title);
     formData.append('content', content);
-
     try {
       await axios.patch(`https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles/${id}`, formData, {
         headers: {
@@ -60,7 +53,16 @@ const EditArticle = () => {
     } catch (error) {
       if (error.response) {
         const { status, data } = error.response;
-        handleErrorResponse(status, data);
+
+        if (status === 404 && data.msg === 'Data tidak ditemukan') {
+          alert(data.msg);
+        } else if (status === 422 && data.msg === 'Format image tidak sesuai') {
+          alert(data.msg);
+        } else if (status === 422 && data.msg === 'Ukuran maksimal image hanya 5 MB') {
+          alert(data.msg);
+        } else {
+          alert(`Error: ${status} - ${data.msg}`);
+        }
       }
     }
   };
@@ -71,31 +73,65 @@ const EditArticle = () => {
     year: '2-digit',
   });
 
-  const handleErrorResponse = (status, data) => {
-    if (status === 404 && data.msg === 'Data tidak ditemukan') {
-      alert(data.msg);
-    } else if (status === 422 && data.msg === 'Format image tidak sesuai') {
-      alert(data.msg);
-    } else if (status === 422 && data.msg === 'Ukuran maksimal image hanya 5 MB') {
-      alert(data.msg);
-    } else {
-      alert(`Error: ${status} - ${data.msg}`);
-    }
-  };
-
   return (
     <div className="flex items-center justify-center mt-5">
       <div className="w-3/4 mt-10">
-        <form
-          onSubmit={updateArticle}
-          className="bg-white px-8 pt-6 pb-8 mb-4 rounded-[30px] border-[1px] border-[#D9D9D9] hover:border-transparent hover:shadow-lg transition-all duration-300"
-        >
-          {/* ... your form fields ... */}
+        <form onSubmit={updateArticle} className="bg-white  px-8 pt-6 pb-8 mb-4 rounded-[30px] border-[1px] border-[#D9D9D9] hover:border-transparent hover:shadow-lg transition-all duration-300">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Author:</label>
+            <input
+              type="text"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              placeholder="Article Name"
+              className="rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Date:</label>
+            <input 
+            type="date" 
+            value={date} 
+            onChange={(e) => setDate(e.target.value)} 
+            className="rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Title:</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Article Name"
+              className="rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Content:</label>
+            <textarea
+              type="text"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Article Name"
+              className="rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">Image:</label>
+            <input type="file" onChange={loadImage} className="rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+
+          {preview && (
+            <div className="mb-4">
+              <img src={preview} alt="Preview Image" className="w-32 h-32 object-cover" />
+            </div>
+          )}
+
           <div className="flex items-center justify-end">
-            <button
-              type="submit"
-              className="bg-[#27005D] rounded-[10px] py-[10px] px-[42px] text-white font-Poppins text-[16px] font-semibold hover:bg-[#0F0024]"
-            >
+            <button type="submit" className="bg-[#27005D] rounded-[10px] py-[10px] px-[42px] text-white font-Poppins text-[16px] font-semibold hover:bg-[#0F0024]">
               Update
             </button>
           </div>
