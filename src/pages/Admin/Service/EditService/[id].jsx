@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const EditService = () => {
   const router = useRouter();
@@ -83,6 +84,10 @@ const EditService = () => {
   };
 
   return (
+    <>
+    <Head>
+    <title>LAYANG</title>
+  </Head>
     <div className="flex items-center justify-center mt-5">
       <div className="w-3/4 mt-10">
         <form onSubmit={updateService} className="bg-white  px-8 pt-6 pb-8 mb-4 rounded-[30px] border-[1px] border-[#D9D9D9] hover:border-transparent hover:shadow-lg transition-all duration-300">
@@ -204,6 +209,7 @@ const EditService = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

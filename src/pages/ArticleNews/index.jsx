@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Head from 'next/head';
 
 export default function NewsList() {
 

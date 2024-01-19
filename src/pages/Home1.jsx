@@ -6,10 +6,14 @@ import Hero from '@/components/Landing_Page_Section/Hero';
 import InfoMitra from '@/components/Landing_Page_Section/InfoMitra';
 import MainBody from '@/components/Landing_Page_Section/MainBody';
 import ChatComponent from '@/components/chat/ChatComponent';
+import Head from 'next/head';
 
 export default function Home1() {
   return (
     <>
+    <Head>
+      <title>LAYANG</title>
+    </Head>
       <MainBody />
       <div className="flex justify-center">
         <div className="w-[1128px]">

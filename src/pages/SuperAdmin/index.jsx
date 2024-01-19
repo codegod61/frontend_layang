@@ -6,6 +6,7 @@ import Kelurahan from './Kelurahan';
 import Admin from './Admin';
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('article');
@@ -29,6 +30,9 @@ const Index = () => {
 
   return (
     <>
+    <Head>
+      <title>LAYANG</title>
+    </Head>
       <div className="fixed w-screen h-screen flex">
         <ul className="absolute top-0 left-0 z-10">
           <div className="bg-[#27005D] w-64 pb-4 rounded-r-3xl border-r-4 border-white h-screen">

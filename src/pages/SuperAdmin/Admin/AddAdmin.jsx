@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const AddAdmin = () => {
   const router = useRouter();
@@ -66,6 +67,9 @@ const AddAdmin = () => {
 
   return (
     <>
+      <Head>
+        <title>LAYANG</title>
+      </Head>
       <div className="flex items-center justify-center mt-5">
         <div className="w-3/4 mt-10">
           <form onSubmit={saveAdmin} className="bg-white  px-8 pt-6 pb-8 mb-4 rounded-[30px] border-[1px] border-[#D9D9D9] hover:border-transparent hover:shadow-lg transition-all duration-300">
@@ -151,7 +155,7 @@ const AddAdmin = () => {
               </select>
             </div>
 
-            
+
 
             <div className="flex items-center justify-end">
               <button type="submit" className="bg-[#27005D] rounded-[10px] py-[10px] px-[42px] text-white font-Poppins text-[16px] font-semibold hover:bg-[#0F0024]">

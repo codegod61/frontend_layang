@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from 'next/router';
+import Head from "next/head";
 
 const AddArticle = () => {
   const router = useRouter();
@@ -26,20 +27,20 @@ const AddArticle = () => {
     formData.append("date", formattedDate);
     formData.append("title", title);
     formData.append("content", content);
-  
+
     try {
       const response = await axios.post("https://layangapi-cc9d2c2831dc.herokuapp.com/api/articles", formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },
       });
-  
+
       router.push("/SuperAdmin");
-  
+
     } catch (error) {
       if (error.response) {
         const { status, data } = error.response;
-  
+
         if (status === 400 && data.msg === "Mohon lengkapi data") {
           alert(data.msg);
         } else if (status === 422 && data.msg === "Format image tidak sesuai") {
@@ -58,82 +59,87 @@ const AddArticle = () => {
     month: '2-digit',
     year: '2-digit',
   });
-  
+
 
   return (
-    <div className="flex items-center justify-center mt-5">
-      <div className="w-3/4 mt-10">
-        <form onSubmit={saveArticle} className="bg-white  px-8 pt-6 pb-8 mb-4 rounded-[30px] border-[1px] border-[#D9D9D9] hover:border-transparent hover:shadow-lg transition-all duration-300 " >
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Penulis</label>
-            <input
-              type="text"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-              placeholder="author name"
-              className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Tanggal</label>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              placeholder="dd-mm-yy"
-              className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Judul</label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="title article"
-              className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Konten</label>
-            <textarea
-              type="text"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder="content"
-              className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Image:</label>
-            <input
-              type="file"
-              onChange={loadImage}
-              className=" rounded-[10px] border-[1px] border-[#D9D9D9]w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-
-          {preview && (
+    <>
+      <Head>
+        <title>LAYANG</title>
+      </Head>
+      <div className="flex items-center justify-center mt-5">
+        <div className="w-3/4 mt-10">
+          <form onSubmit={saveArticle} className="bg-white  px-8 pt-6 pb-8 mb-4 rounded-[30px] border-[1px] border-[#D9D9D9] hover:border-transparent hover:shadow-lg transition-all duration-300 " >
             <div className="mb-4">
-              <img src={preview} alt="Preview Image" className="w-32 h-32 object-cover" />
+              <label className="block text-gray-700 text-sm font-bold mb-2">Penulis</label>
+              <input
+                type="text"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                placeholder="author name"
+                className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
             </div>
-          )}
 
-          <div className="flex items-center justify-end">
-           <button
-              type="submit"
-              className="bg-[#27005D] rounded-[10px] py-[10px] px-[42px] text-white font-Poppins text-[16px] font-semibold hover:bg-[#0F0024]"
-            >
-              Save
-            </button>
-          </div>
-        </form>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Tanggal</label>
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="dd-mm-yy"
+                className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Judul</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="title article"
+                className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Konten</label>
+              <textarea
+                type="text"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                placeholder="content"
+                className=" rounded-[10px] border-[1px] border-[#D9D9D9] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Image:</label>
+              <input
+                type="file"
+                onChange={loadImage}
+                className=" rounded-[10px] border-[1px] border-[#D9D9D9]w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+
+            {preview && (
+              <div className="mb-4">
+                <img src={preview} alt="Preview Image" className="w-32 h-32 object-cover" />
+              </div>
+            )}
+
+            <div className="flex items-center justify-end">
+              <button
+                type="submit"
+                className="bg-[#27005D] rounded-[10px] py-[10px] px-[42px] text-white font-Poppins text-[16px] font-semibold hover:bg-[#0F0024]"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
